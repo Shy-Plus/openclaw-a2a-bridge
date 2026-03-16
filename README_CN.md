@@ -59,7 +59,38 @@
 └──────────────────────┘                                └──────────────────────┘
 ```
 
-## 快速开始
+## 🤖 直接告诉你的 Agent（推荐方式）
+
+最简单的安装方法？**直接给你的 OpenClaw Agent 发这段话：**
+
+### 单个 Agent 安装
+
+> 帮我安装 A2A Bridge。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git 到 workspace/projects/，安装 Python 依赖，从 .env.example 创建 .env，把 A2A_PUBLIC_URL 设成我这台机器的 IP，然后在 9100 端口启动 A2A Server。同时在 gateway 配置里启用 OpenResponses API（gateway.http.endpoints.responses.enabled = true）并重启 gateway。
+
+### 连接两个 Agent
+
+Agent A 已经装好了？给 Agent B 发：
+
+> 安装 A2A Bridge 并连接另一个 Agent。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，安装依赖，在 .env 里设置 A2A_PUBLIC_URL 为我的 IP，A2A_REMOTE_HOST 设为 {Agent A 的 IP}。启动 A2A Server，然后测试连接：`python -m src.client --target http://{Agent A 的 IP}:9100 --message "你好，我是 Agent B"`。同时启用 OpenResponses API。
+
+### 多 Agent 组网
+
+3个以上 Agent？给每个新 Agent 发：
+
+> 加入 A2A Agent 网络。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，把 A2A_PUBLIC_URL 设成我的 IP。在 9100 端口启动 Server。然后发现并测试所有已知 Agent：{列出它们的 IP}。给每个 Agent 发一条 hello 完成注册。
+
+### OpenClaw 配置命令
+
+你的 Agent 需要启用 OpenResponses API。它可以自动完成，或者手动执行：
+
+```bash
+openclaw config set gateway.http.endpoints.responses.enabled true
+openclaw gateway restart
+```
+
+---
+
+## 快速开始（手动方式）
 
 ### 1. 安装
 

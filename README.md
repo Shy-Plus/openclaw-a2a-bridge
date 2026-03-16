@@ -61,7 +61,38 @@ AI agents are powerful individually, but **collaboration** unlocks their real po
 └──────────────────────┘                                └──────────────────────┘
 ```
 
-## Quick Start
+## 🤖 Just Tell Your Agent (Recommended)
+
+The easiest way to set up A2A Bridge? **Just send this message to your OpenClaw agent:**
+
+### Single Agent Setup
+
+> Install the A2A Bridge and set it up for me. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git into my workspace/projects/, install Python dependencies, create a .env from .env.example, set A2A_PUBLIC_URL to my machine's IP, and start the A2A server on port 9100. Also enable OpenResponses API in my gateway config (gateway.http.endpoints.responses.enabled = true) and restart the gateway.
+
+### Connect Two Agents
+
+Already have A2A Bridge running on Agent A? Send this to Agent B:
+
+> Set up A2A Bridge to connect with the other agent. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git, install dependencies, configure .env with A2A_PUBLIC_URL set to my IP and A2A_REMOTE_HOST set to {Agent A's IP}. Start the A2A server, then test the connection: `python -m src.client --target http://{Agent A's IP}:9100 --message "Hello from Agent B"`. Also enable OpenResponses API in my gateway config.
+
+### Multi-Agent Network
+
+For 3+ agents, send to each new agent:
+
+> Join the A2A agent network. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git, install deps, configure with my IP as A2A_PUBLIC_URL. Start the server on port 9100. Then discover and test all known agents: {list their IPs}. Register yourself by sending a hello message to each one.
+
+### OpenClaw Config Command
+
+Your agent will need to enable the OpenResponses API. It can do this automatically, or you can run:
+
+```bash
+openclaw config set gateway.http.endpoints.responses.enabled true
+openclaw gateway restart
+```
+
+---
+
+## Quick Start (Manual)
 
 ### 1. Install
 
