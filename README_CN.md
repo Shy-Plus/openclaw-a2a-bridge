@@ -63,25 +63,38 @@
 
 最简单的安装方法？**直接给你的 OpenClaw Agent 发这段话：**
 
-### 单个 Agent 安装
+### 完整安装 Prompt（推荐）
 
-> 帮我安装 A2A Bridge。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git 到 workspace/projects/，安装 Python 依赖，从 .env.example 创建 .env，把 A2A_PUBLIC_URL 设成我这台机器的 IP，然后在 9100 端口启动 A2A Server。同时在 gateway 配置里启用 OpenResponses API（gateway.http.endpoints.responses.enabled = true）并重启 gateway。
+我们提供了经过实战验证的分步安装 prompt，涵盖环境检测、依赖安装、配置、验证和开机自启——全自动完成。
+
+**复制以下文件中的完整 prompt，发给你的 agent：**
+
+- 🇨🇳 [INSTALL_PROMPT.md](INSTALL_PROMPT.md) — 中文版
+- 🇺🇸 [INSTALL_PROMPT.en.md](INSTALL_PROMPT.en.md) — English version
+
+Prompt 覆盖 7 个阶段：环境确认 → 安装 → 配置 → 启动验证 → 连接远程 Agent → 开机自启 → 交付结果。
+
+### 精简版（赶时间用这个）
+
+给你的 agent 发这段：
+
+> 帮我安装 A2A Bridge。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git 到 workspace/projects/，执行 `pip install -r requirements.txt`，从 `.env.example` 复制 `.env`，探测我的机器 IP（优先 Tailscale IP），把 `A2A_PUBLIC_URL` 设成我的 IP:9100，在 gateway 配置里启用 OpenResponses API（`gateway.http.endpoints.responses.enabled = true`），重启 gateway，然后用 `./scripts/run_server.sh` 启动 A2A Server。验证 Agent Card 在 `http://{我的IP}:9100/.well-known/agent-card.json` 可达。把 `cards/agent_card.json` 里的名字和技能改成我的 agent 的信息。
 
 ### 连接两个 Agent
 
-Agent A 已经装好了？给 Agent B 发：
+Agent A 已经在跑了？给 Agent B 发：
 
-> 安装 A2A Bridge 并连接另一个 Agent。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，安装依赖，在 .env 里设置 A2A_PUBLIC_URL 为我的 IP，A2A_REMOTE_HOST 设为 {Agent A 的 IP}。启动 A2A Server，然后测试连接：`python -m src.client --target http://{Agent A 的 IP}:9100 --message "你好，我是 Agent B"`。同时启用 OpenResponses API。
+> 安装 A2A Bridge 并连接另一个 Agent。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，在 `.env` 里把 `A2A_PUBLIC_URL` 设成我的 IP。启动 Server，然后测试：`python -m src.client --target http://{Agent A 的 IP}:9100 --message "你好，我是 Agent B"`。收到回复就说明通了。
 
 ### 多 Agent 组网
 
 3个以上 Agent？给每个新 Agent 发：
 
-> 加入 A2A Agent 网络。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，把 A2A_PUBLIC_URL 设成我的 IP。在 9100 端口启动 Server。然后发现并测试所有已知 Agent：{列出它们的 IP}。给每个 Agent 发一条 hello 完成注册。
+> 加入 A2A 网络。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，把 `A2A_PUBLIC_URL` 设成我的 IP，9100 端口启动。发现并测试所有已知 Agent：{列出它们的 IP}。给每个发一条 hello 完成注册。
 
-### OpenClaw 配置命令
+### OpenClaw 配置（agent 会自动处理）
 
-你的 Agent 需要启用 OpenResponses API。它可以自动完成，或者手动执行：
+安装 prompt 会自动处理，手动操作的话：
 
 ```bash
 openclaw config set gateway.http.endpoints.responses.enabled true
