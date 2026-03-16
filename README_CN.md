@@ -63,43 +63,27 @@
 
 最简单的安装方法？**直接给你的 OpenClaw Agent 发这段话：**
 
-### 完整安装 Prompt（推荐）
+给你的 OpenClaw Agent 发送以下消息之一。它会自己阅读完整的安装文档，然后自动完成环境检测、依赖安装、配置、验证、开机自启和远程连接。
 
-我们提供了经过实战验证的分步安装 prompt，涵盖环境检测、依赖安装、配置、验证和开机自启——全自动完成。
+### 单个 Agent 安装
 
-**复制以下文件中的完整 prompt，发给你的 agent：**
-
-- 🇨🇳 [INSTALL_PROMPT.md](INSTALL_PROMPT.md) — 中文版
-- 🇺🇸 [INSTALL_PROMPT.en.md](INSTALL_PROMPT.en.md) — English version
-
-Prompt 覆盖 7 个阶段：环境确认 → 安装 → 配置 → 启动验证 → 连接远程 Agent → 开机自启 → 交付结果。
-
-### 精简版（赶时间用这个）
-
-给你的 agent 发这段：
-
-> 帮我安装 A2A Bridge。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git 到 workspace/projects/，执行 `pip install -r requirements.txt`，从 `.env.example` 复制 `.env`，探测我的机器 IP（优先 Tailscale IP），把 `A2A_PUBLIC_URL` 设成我的 IP:9100，在 gateway 配置里启用 OpenResponses API（`gateway.http.endpoints.responses.enabled = true`），重启 gateway，然后用 `./scripts/run_server.sh` 启动 A2A Server。验证 Agent Card 在 `http://{我的IP}:9100/.well-known/agent-card.json` 可达。把 `cards/agent_card.json` 里的名字和技能改成我的 agent 的信息。
+> 阅读 https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.md 并严格按照文档中的每一步执行。完成全部 7 个阶段，不要跳过任何步骤。
 
 ### 连接两个 Agent
 
 Agent A 已经在跑了？给 Agent B 发：
 
-> 安装 A2A Bridge 并连接另一个 Agent。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，在 `.env` 里把 `A2A_PUBLIC_URL` 设成我的 IP。启动 Server，然后测试：`python -m src.client --target http://{Agent A 的 IP}:9100 --message "你好，我是 Agent B"`。收到回复就说明通了。
+> 阅读 https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.md 并严格执行全部步骤。安装完成后，连接远程 Agent：http://{Agent A 的 IP}:9100，发现它并发送测试消息。
 
 ### 多 Agent 组网
 
 3个以上 Agent？给每个新 Agent 发：
 
-> 加入 A2A 网络。克隆 https://github.com/Shy-Plus/openclaw-a2a-bridge.git，装依赖，把 `A2A_PUBLIC_URL` 设成我的 IP，9100 端口启动。发现并测试所有已知 Agent：{列出它们的 IP}。给每个发一条 hello 完成注册。
+> 阅读 https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.md 并严格执行。安装完成后，发现并连接所有已知 Agent：{列出它们的 IP}。给每个发一条 hello 完成注册。
 
-### OpenClaw 配置（agent 会自动处理）
+**English version:**
 
-安装 prompt 会自动处理，手动操作的话：
-
-```bash
-openclaw config set gateway.http.endpoints.responses.enabled true
-openclaw gateway restart
-```
+> Read https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.en.md and follow every instruction in it. Complete all 7 phases. Do not skip any step.
 
 ---
 

@@ -65,43 +65,27 @@ AI agents are powerful individually, but **collaboration** unlocks their real po
 
 The easiest way to set up A2A Bridge? **Just send this message to your OpenClaw agent:**
 
-### Full Install Prompt (Recommended)
+Send one of the following messages to your OpenClaw agent. It will read the full install document, then handle everything — environment detection, dependencies, configuration, verification, auto-start, and remote agent connection.
 
-We provide a battle-tested, step-by-step install prompt that handles environment detection, dependency installation, configuration, verification, and auto-start setup — all automatically.
+### Single Agent Setup
 
-**Copy the entire prompt from one of these files and paste it to your agent:**
-
-- 🇨🇳 [INSTALL_PROMPT.md](INSTALL_PROMPT.md) — 中文版
-- 🇺🇸 [INSTALL_PROMPT.en.md](INSTALL_PROMPT.en.md) — English version
-
-The prompt covers 7 phases: environment check → install → configure → start & verify → connect remote agents → auto-start → deliver results.
-
-### Quick Version (if you're in a hurry)
-
-Send this to your agent for a minimal setup:
-
-> Install OpenClaw A2A Bridge. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git into my workspace/projects/, run `pip install -r requirements.txt`, copy `.env.example` to `.env`, detect my machine IP (prefer Tailscale IP if available), set `A2A_PUBLIC_URL` to my IP on port 9100, enable OpenResponses API in gateway config (`gateway.http.endpoints.responses.enabled = true`), restart the gateway, then start the A2A server with `./scripts/run_server.sh`. Verify the Agent Card is reachable at `http://{my_ip}:9100/.well-known/agent-card.json`. Customize `cards/agent_card.json` with my agent's name and skills.
+> Read https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.en.md and follow every instruction in it. Complete all 7 phases. Do not skip any step.
 
 ### Connect Two Agents
 
 Agent A is already running? Send this to Agent B:
 
-> Install A2A Bridge and connect to the other agent. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git, install deps, configure `.env` with my IP as `A2A_PUBLIC_URL`. Start the server, then test: `python -m src.client --target http://{Agent A's IP}:9100 --message "Hello from Agent B"`. If it replies, we're connected.
+> Read https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.en.md and follow every instruction. After setup, connect to the remote agent at http://{Agent A's IP}:9100 — discover it and send a test message.
 
 ### Multi-Agent Network
 
 For 3+ agents, send to each new agent:
 
-> Join the A2A network. Clone https://github.com/Shy-Plus/openclaw-a2a-bridge.git, install deps, set `A2A_PUBLIC_URL` to my IP, start on port 9100. Discover all known agents: {list their IPs}. Send a hello to each one to register.
+> Read https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.en.md and follow every instruction. After setup, discover and connect to all known agents: {list their IPs}. Send a hello to each one.
 
-### OpenClaw Config (your agent does this automatically)
+**中文版 / Chinese:**
 
-The install prompt handles this, but if you need to do it manually:
-
-```bash
-openclaw config set gateway.http.endpoints.responses.enabled true
-openclaw gateway restart
-```
+> 阅读 https://raw.githubusercontent.com/Shy-Plus/openclaw-a2a-bridge/main/INSTALL_PROMPT.md 并严格按照文档中的每一步执行。完成全部 7 个阶段，不要跳过任何步骤。
 
 ---
 
