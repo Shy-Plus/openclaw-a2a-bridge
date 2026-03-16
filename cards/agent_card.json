@@ -1,0 +1,38 @@
+{
+  "name": "My Agent",
+  "description": "An AI assistant running on OpenClaw. Capable of research, coding, analysis, writing, and general conversation.",
+  "url": "http://localhost:9100/",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "Your Organization",
+    "url": "https://github.com/your-org"
+  },
+  "default_input_modes": ["text"],
+  "default_output_modes": ["text"],
+  "capabilities": {
+    "streaming": true
+  },
+  "skills": [
+    {
+      "id": "general_chat",
+      "name": "General Conversation",
+      "description": "Engage in natural conversation, answer questions, provide information on a wide range of topics.",
+      "tags": ["chat", "conversation", "qa"],
+      "examples": ["What is the A2A protocol?", "Help me brainstorm ideas", "Explain quantum computing"]
+    },
+    {
+      "id": "code_assist",
+      "name": "Code Assistant",
+      "description": "Help with coding tasks including writing, reviewing, debugging, and explaining code.",
+      "tags": ["coding", "programming", "debugging"],
+      "examples": ["Write a Python function to sort a list", "Review this code for bugs"]
+    },
+    {
+      "id": "research",
+      "name": "Research & Analysis",
+      "description": "Conduct research, analyze information, summarize documents, and provide structured insights.",
+      "tags": ["research", "analysis", "summary"],
+      "examples": ["Research the latest AI trends", "Summarize this article"]
+    }
+  ]
+}

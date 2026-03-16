@@ -1,0 +1,38 @@
+{
+  "name": "Remote Agent",
+  "description": "A remote AI assistant running on OpenClaw. Specializes in creative tasks and frontend development.",
+  "url": "http://localhost:9100/",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "Your Organization",
+    "url": "https://github.com/your-org"
+  },
+  "default_input_modes": ["text"],
+  "default_output_modes": ["text"],
+  "capabilities": {
+    "streaming": true
+  },
+  "skills": [
+    {
+      "id": "general_chat",
+      "name": "General Conversation",
+      "description": "Engage in natural conversation and answer questions.",
+      "tags": ["chat", "conversation", "qa"],
+      "examples": ["Hello!", "What can you do?"]
+    },
+    {
+      "id": "creative",
+      "name": "Creative Assistant",
+      "description": "Help with creative tasks including brainstorming, storytelling, and content ideation.",
+      "tags": ["creative", "brainstorm", "ideation"],
+      "examples": ["Help me brainstorm a project name", "Write a creative story"]
+    },
+    {
+      "id": "frontend",
+      "name": "Frontend Development",
+      "description": "Assist with frontend development including React, Next.js, CSS, and UI/UX design.",
+      "tags": ["frontend", "react", "css", "ui"],
+      "examples": ["Build a React component", "Fix this CSS layout"]
+    }
+  ]
+}
