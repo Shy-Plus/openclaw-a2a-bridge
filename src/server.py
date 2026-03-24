@@ -123,7 +123,7 @@ def main():
     )
     parser.add_argument(
         "--token", default=GATEWAY_TOKEN,
-        help="Gateway auth token (prefer A2A_GATEWAY_TOKEN env var)",
+        help="Gateway shared auth credential (prefer A2A_GATEWAY_TOKEN env var)",
     )
     parser.add_argument(
         "--model", default="echo",
@@ -133,7 +133,7 @@ def main():
 
     if not args.token:
         logger.error(
-            "No gateway token found. "
+            "No gateway credential found. "
             "Set A2A_GATEWAY_TOKEN env var or configure openclaw.json"
         )
         sys.exit(1)

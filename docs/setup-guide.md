@@ -38,7 +38,7 @@ Key settings to configure:
 
 | Variable | What to set |
 |----------|------------|
-| `A2A_GATEWAY_TOKEN` | Your OpenClaw gateway token (or leave empty to auto-detect from `~/.openclaw/openclaw.json`) |
+| `A2A_GATEWAY_TOKEN` | Your OpenClaw gateway shared credential (token or password), or leave empty to auto-detect from `~/.openclaw/openclaw.json` |
 | `A2A_PUBLIC_URL` | The URL other agents will use to reach this server (e.g., `http://YOUR_TAILSCALE_IP:9100`) |
 | `A2A_LOCAL_PORT` | Port for the A2A server (default: 9100) |
 

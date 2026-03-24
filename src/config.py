@@ -5,7 +5,7 @@ All settings are loaded from environment variables or .env file.
 Centralizes endpoint URLs, tokens, and network settings.
 
 Required environment variables:
-    A2A_GATEWAY_TOKEN   - Gateway authentication token
+    A2A_GATEWAY_TOKEN   - Gateway shared auth credential (token or password)
 
 Optional environment variables:
     A2A_LOCAL_HOST      - Local agent Tailscale IP (default: 0.0.0.0)
@@ -54,7 +54,7 @@ REMOTE_PUBLIC_URL = os.getenv(
 
 def _load_gateway_token() -> str:
     """
-    Load the gateway auth token.
+    Load the active gateway shared auth credential.
 
     Priority:
     1. A2A_GATEWAY_TOKEN environment variable
@@ -68,7 +68,16 @@ def _load_gateway_token() -> str:
     try:
         with open(config_path) as f:
             config = json.load(f)
-        return config.get("gateway", {}).get("auth", {}).get("token", "")
+        auth_cfg = config.get("gateway", {}).get("auth", {})
+        mode = str(auth_cfg.get("mode", "")).strip().lower()
+
+        if mode == "password":
+            return auth_cfg.get("password", "")
+        if mode == "token":
+            return auth_cfg.get("token", "")
+
+        # Fall back to whichever shared credential exists when mode is unset.
+        return auth_cfg.get("token", "") or auth_cfg.get("password", "")
     except (FileNotFoundError, json.JSONDecodeError, KeyError):
         return ""
 

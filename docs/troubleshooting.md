@@ -23,7 +23,7 @@
    ```
    If this fails, reinstall: `pip install -r requirements.txt`
 
-4. **Check gateway token:**
+4. **Check gateway credential:**
    ```bash
    # Token should be non-empty
    python3 -c "from src.config import GATEWAY_TOKEN; print('Token:', 'set' if GATEWAY_TOKEN else 'MISSING')"
@@ -90,7 +90,7 @@
    ```
 
 3. **Check gateway auth:**
-   If you get 401 errors, your token may be wrong. Re-check `A2A_GATEWAY_TOKEN` or `~/.openclaw/openclaw.json`.
+   If you get 401 errors, your shared credential may be wrong. Re-check `A2A_GATEWAY_TOKEN` or `~/.openclaw/openclaw.json`. If your gateway uses `gateway.auth.mode="password"`, make sure the bridge is reading `gateway.auth.password` rather than looking for a token.
 
 ### Streaming not working
 

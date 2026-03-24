@@ -179,7 +179,9 @@ python examples/demo.py --local http://agent-a:9100 --remote http://agent-b:9100
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `A2A_GATEWAY_TOKEN` | Auto-detect from `openclaw.json` | Gateway auth token |
+| `A2A_GATEWAY_TOKEN` | Auto-detect from `openclaw.json` | Gateway shared auth credential (token or password) |
+
+> Note: if your OpenClaw gateway uses `gateway.auth.mode="password"`, the bridge now auto-detects `gateway.auth.password` from `~/.openclaw/openclaw.json` when `A2A_GATEWAY_TOKEN` is not set.
 | `A2A_LOCAL_HOST` | `0.0.0.0` | Server bind address |
 | `A2A_LOCAL_PORT` | `9100` | Server port |
 | `A2A_LOCAL_API` | `http://localhost:18789/v1/responses` | OpenResponses API URL |

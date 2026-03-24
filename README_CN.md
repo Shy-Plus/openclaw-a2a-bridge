@@ -155,7 +155,9 @@ python examples/demo.py --local http://设备A:9100 --remote http://设备B:9100
 
 | 环境变量 | 默认值 | 说明 |
 |----------|--------|------|
-| `A2A_GATEWAY_TOKEN` | 自动从 `openclaw.json` 读取 | Gateway 认证 Token |
+| `A2A_GATEWAY_TOKEN` | 自动从 `openclaw.json` 读取 | Gateway 共享认证凭据（token 或 password） |
+
+> 说明：如果 OpenClaw gateway 使用 `gateway.auth.mode="password"`，且未显式设置 `A2A_GATEWAY_TOKEN`，bridge 现在会自动从 `~/.openclaw/openclaw.json` 读取 `gateway.auth.password`。
 | `A2A_LOCAL_HOST` | `0.0.0.0` | 绑定地址 |
 | `A2A_LOCAL_PORT` | `9100` | 监听端口 |
 | `A2A_LOCAL_API` | `http://localhost:18789/v1/responses` | OpenResponses API 地址 |
